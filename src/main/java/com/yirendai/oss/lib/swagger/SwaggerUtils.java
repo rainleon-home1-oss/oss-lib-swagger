@@ -13,7 +13,7 @@ public abstract class SwaggerUtils {
 
   public static ApiInfo apiInfo(final String title, final String description) {
     return new ApiInfoBuilder()
-      //.contact(new Contact("haolun zhang", "", "haolunzhang@yirendai.com"))
+      //.contact(new Contact("haolun zhang", "", "haolunzhang@somedomain.com"))
       .description(description)
       //.license("Apache License Version 2.0")
       //.licenseUrl("https://github.com/IBM-Bluemix/news-aggregator/blob/master/LICENSE")
