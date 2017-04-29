@@ -1,14 +1,14 @@
-package com.yirendai.oss.lib.swagger.starter;
+package cn.home1.oss.lib.swagger.starter;
 
+import static cn.home1.oss.lib.swagger.SwaggerUtils.apiInfo;
 import static com.google.common.base.Predicates.or;
-import static com.yirendai.oss.lib.swagger.SwaggerUtils.apiInfo;
-import static com.yirendai.oss.lib.swagger.starter.NoManagementConfiguration.MANAGEMENT_PATHS;
 
 import com.google.common.base.Predicate;
 
+import cn.home1.oss.boot.autoconfigure.PathUtils;
+
 import com.fasterxml.classmate.ResolvedType;
 import com.fasterxml.classmate.TypeResolver;
-import com.yirendai.oss.boot.autoconfigure.PathUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -54,7 +54,7 @@ public class ManagementConfiguration {
     return modelResolvedError.isPresent() ? docket.additionalModels(modelResolvedError.get()) : docket;
   }
 
-  @Bean(name = MANAGEMENT_PATHS)
+  @Bean(name = NoManagementConfiguration.MANAGEMENT_PATHS)
   public Predicate<String> managementPaths() {
     // TODO EnvironmentManagerMvcEndpoint @RequestParam Map<String, String> params issus
     // https://github.com/springfox/springfox/issues/1481
@@ -67,9 +67,9 @@ public class ManagementConfiguration {
     Optional<ResolvedType> result;
     try {
       result = Optional.ofNullable(new TypeResolver().resolve( //
-        Class.forName("com.yirendai.oss.lib.errorhandle.api.ResolvedError")));
+        Class.forName("cn.home1.oss.lib.errorhandle.api.ResolvedError")));
     } catch (final ClassNotFoundException ex) {
-      log.trace("Swagger can't find class com.yirendai.oss.lib.errorhandle.api.ResolvedError," + //
+      log.trace("Swagger can't find class cn.home1.oss.lib.errorhandle.api.ResolvedError," + //
         "so api will not show this info in swagger api document.", ex);
       result = Optional.empty();
     }

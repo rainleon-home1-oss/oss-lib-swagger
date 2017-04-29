@@ -24,7 +24,7 @@
 
 ```
     <dependency>
-        <groupId>com.yirendai.infra</groupId>
+        <groupId>cn.home1</groupId>
         <artifactId>oss-lib-swagger-spring-boot-${spring-boot.version}</artifactId>
     </dependency>
 ```
