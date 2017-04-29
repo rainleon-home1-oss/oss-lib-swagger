@@ -1,4 +1,4 @@
-package com.yirendai.oss.lib.swagger.model;
+package cn.home1.oss.lib.swagger.model;
 
 import lombok.Builder;
 import lombok.Data;

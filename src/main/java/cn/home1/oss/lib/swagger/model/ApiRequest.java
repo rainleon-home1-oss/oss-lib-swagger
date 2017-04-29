@@ -1,4 +1,4 @@
-package com.yirendai.oss.lib.swagger.model;
+package cn.home1.oss.lib.swagger.model;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.google.common.collect.Lists.newArrayList;

@@ -1,4 +1,4 @@
-package com.yirendai.oss.lib.swagger;
+package cn.home1.oss.lib.swagger;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;

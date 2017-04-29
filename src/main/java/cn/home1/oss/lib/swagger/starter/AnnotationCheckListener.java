@@ -1,4 +1,4 @@
-package com.yirendai.oss.lib.swagger.starter;
+package cn.home1.oss.lib.swagger.starter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

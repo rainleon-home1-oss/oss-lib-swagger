@@ -1,4 +1,4 @@
-package com.yirendai.oss.lib.swagger.starter;
+package cn.home1.oss.lib.swagger.starter;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;

@@ -1,12 +1,13 @@
-package com.yirendai.oss.lib.swagger;
+package cn.home1.oss.lib.swagger;
 
 import static com.google.common.collect.Sets.newHashSet;
 import static lombok.AccessLevel.PRIVATE;
 
 import com.google.common.base.Optional;
 
+import cn.home1.oss.lib.swagger.model.ApiOperationInfo;
+
 import com.fasterxml.classmate.ResolvedType;
-import com.yirendai.oss.lib.swagger.model.ApiOperationInfo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

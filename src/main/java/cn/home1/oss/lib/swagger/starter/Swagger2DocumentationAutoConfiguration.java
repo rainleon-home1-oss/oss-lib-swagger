@@ -1,12 +1,10 @@
-package com.yirendai.oss.lib.swagger.starter;
+package cn.home1.oss.lib.swagger.starter;
 
+import static cn.home1.oss.lib.swagger.SwaggerUtils.apiInfo;
 import static com.google.common.base.Predicates.not;
 import static com.google.common.base.Predicates.or;
 import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Sets.newLinkedHashSet;
-import static com.yirendai.oss.lib.swagger.SwaggerUtils.apiInfo;
-import static com.yirendai.oss.lib.swagger.starter.ManagementConfiguration.modelResolvedError;
-import static com.yirendai.oss.lib.swagger.starter.NoManagementConfiguration.MANAGEMENT_PATHS;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static springfox.documentation.builders.PathSelectors.ant;
@@ -14,9 +12,10 @@ import static springfox.documentation.builders.PathSelectors.regex;
 
 import com.google.common.base.Predicate;
 
+import cn.home1.oss.boot.autoconfigure.AppUtils;
+import cn.home1.oss.boot.autoconfigure.ConditionalOnNotEnvProduction;
+
 import com.fasterxml.classmate.ResolvedType;
-import com.yirendai.oss.boot.autoconfigure.AppUtils;
-import com.yirendai.oss.boot.autoconfigure.ConditionalOnNotEnvProduction;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -81,7 +80,7 @@ public class Swagger2DocumentationAutoConfiguration {
   @Autowired(required = false)
   private ServerProperties serverProperties;
 
-  @Qualifier(MANAGEMENT_PATHS)
+  @Qualifier(NoManagementConfiguration.MANAGEMENT_PATHS)
   @Autowired
   public Predicate<String> managementPaths;
 
@@ -100,7 +99,7 @@ public class Swagger2DocumentationAutoConfiguration {
       .apis(or(this.applicationAips(), this.springApis())) //
       .paths(not(this.managementPaths)) //
       .build();
-    final Optional<ResolvedType> modelResolvedError = modelResolvedError();
+    final Optional<ResolvedType> modelResolvedError = ManagementConfiguration.modelResolvedError();
     return modelResolvedError.isPresent() ? docket.additionalModels(modelResolvedError.get()) : docket;
   }
 
@@ -113,7 +112,7 @@ public class Swagger2DocumentationAutoConfiguration {
   }
 
   private Predicate<RequestHandler> applicationAips() {
-    final Predicate<RequestHandler> ossLibApi = RequestHandlerSelectors.basePackage("com.yirendai"); // TODO 从此类包取前两段
+    final Predicate<RequestHandler> ossLibApi = RequestHandlerSelectors.basePackage("cn.home1"); // TODO 从此类包取前两段
     final String applicationPackage = AppUtils.appBasePackage("");
     return isNotBlank(applicationPackage) ? //
       or(RequestHandlerSelectors.basePackage(applicationPackage), ossLibApi) : //
